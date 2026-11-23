@@ -1,0 +1,17 @@
+# Závislosti
+node_modules/
+
+# Výstup buildu
+dist/
+
+# Lokální proměnné prostředí s hodnotami (nikdy necommitovat)
+.env
+.env.local
+.env.*.local
+
+# Logy a systémové soubory
+*.log
+.DS_Store
+
+# Cache TypeScriptu
+*.tsbuildinfo

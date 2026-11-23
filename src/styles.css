@@ -217,6 +217,88 @@ h1 {
   line-height: 1.6;
 }
 
+.projects-section {
+  display: grid;
+  gap: var(--space);
+  margin-top: calc(var(--space) * 2);
+}
+
+.projects-heading {
+  max-width: 700px;
+  padding: calc(var(--space) * 2);
+  background: var(--color-surface);
+  border-radius: var(--radius);
+}
+
+.projects-heading h1 {
+  margin-bottom: var(--space);
+}
+
+.projects-heading .lead {
+  margin-bottom: 0;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space);
+}
+
+.project-card {
+  overflow: hidden;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+}
+
+.project-visual {
+  display: flex;
+  min-height: 180px;
+  align-items: flex-end;
+  padding: var(--space);
+  background-color: #dce9d9;
+  background-image: radial-gradient(ellipse at 75% 30%, #f4f0d8 0 12%, transparent 13%), radial-gradient(ellipse at 25% 72%, #71966d 0 21%, transparent 22%), linear-gradient(145deg, #c9d9bb, #edf0df);
+}
+
+.project-visual span {
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  color: var(--color-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.project-meadow {
+  background-color: #e8ebd2;
+  background-image: radial-gradient(ellipse at 75% 35%, #f7f1d2 0 13%, transparent 14%), radial-gradient(ellipse at 35% 70%, #8ca46c 0 24%, transparent 25%), linear-gradient(145deg, #d9e3c2, #f1eedb);
+}
+
+.project-terrace {
+  background-color: #d9e5db;
+  background-image: radial-gradient(ellipse at 75% 35%, #f3edd6 0 12%, transparent 13%), radial-gradient(ellipse at 25% 75%, #638b69 0 19%, transparent 20%), linear-gradient(145deg, #c5d8d0, #e9ede2);
+}
+
+.project-copy {
+  padding: var(--space);
+}
+
+.project-meta {
+  margin: 0 0 8px;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}
+
+.project-copy h2 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+}
+
+.project-copy > p:last-child {
+  margin: 0;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
 .form-note {
   margin: 0;
   color: var(--color-muted);
@@ -234,8 +316,13 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
   .about-heading,
-  .about-story {
+  .about-story,
+  .projects-heading {
     padding: var(--space);
   }
 }

@@ -3,7 +3,7 @@
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Projects", href: "#" },
+  { label: "Projects", href: "/projects" },
   { label: "About", href: "/about" },
   { label: "Kontakt", href: "/contact" },
 ];
@@ -33,6 +33,62 @@ function ContactPage() {
         </label>
         <button className="button" type="button">Odeslat zprávu</button>
       </form>
+    </section>
+  );
+}
+
+const projects = [
+  {
+    number: "01",
+    title: "Zahrada ve stínu",
+    type: "Městský dvůr",
+    description: "Klidné zákoutí s kapradinami, měkkým posezením a rostlinami, kterým se daří i bez přímého slunce.",
+    visual: "project-visual project-shade",
+    detail: "Stínomilná výsadba",
+  },
+  {
+    number: "02",
+    title: "Louka u domu",
+    type: "Rodinná zahrada",
+    description: "Přirozeně působící výsadba, která propojuje terasu s okolní zelení a zve k objevování.",
+    visual: "project-visual project-meadow",
+    detail: "Přírodní charakter",
+  },
+  {
+    number: "03",
+    title: "Zelená terasa",
+    type: "Městská terasa",
+    description: "Promyšlené nádoby, popínavá zeleň a místo pro odpočinek i na menším prostoru.",
+    visual: "project-visual project-terrace",
+    detail: "Malý prostor, velký klid",
+  },
+];
+
+function ProjectsPage() {
+  return (
+    <section className="projects-section" aria-labelledby="projects-title">
+      <header className="projects-heading">
+        <p className="eyebrow">Ukázkové koncepty</p>
+        <h1 id="projects-title">Projects</h1>
+        <p className="lead">
+          Prohlédněte si zahradní koncepty od stinného dvora a přírodní louky
+          až po zelenou městskou terasu.
+        </p>
+      </header>
+      <div className="project-grid">
+        {projects.map((project) => (
+          <article className="project-card" key={project.number}>
+            <div className={project.visual} aria-hidden="true">
+              <span>{project.detail}</span>
+            </div>
+            <div className="project-copy">
+              <p className="project-meta">{project.number} · {project.type}</p>
+              <h2>{project.title}</h2>
+              <p>{project.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
     </section>
   );
 }
@@ -92,6 +148,7 @@ export default function App() {
   const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
   const isContactPage = currentPath === "/contact";
   const isAboutPage = currentPath === "/about";
+  const isProjectsPage = currentPath === "/projects";
 
   return (
     <main className="app">
@@ -109,6 +166,8 @@ export default function App() {
         <ContactPage />
       ) : isAboutPage ? (
         <AboutPage />
+      ) : isProjectsPage ? (
+        <ProjectsPage />
       ) : (
         <header className="hero">
           <h1>Garden Studio</h1>

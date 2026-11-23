@@ -4,7 +4,7 @@
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Projects", href: "#" },
-  { label: "About", href: "#" },
+  { label: "About", href: "/about" },
   { label: "Kontakt", href: "/contact" },
 ];
 
@@ -37,8 +37,61 @@ function ContactPage() {
   );
 }
 
+const principles = [
+  {
+    number: "01",
+    title: "Nasloucháme místu",
+    description: "Vycházíme z charakteru zahrady, jejího okolí i z toho, jak ji chcete každý den používat.",
+  },
+  {
+    number: "02",
+    title: "Tvoříme s citem",
+    description: "Propojujeme zeleň, materiály a praktické potřeby do klidného a přirozeného celku.",
+  },
+  {
+    number: "03",
+    title: "Myslíme na budoucnost",
+    description: "Navrhujeme zahrady, které mohou dobře růst, měnit se a dělat radost dlouhodobě.",
+  },
+];
+
+function AboutPage() {
+  return (
+    <section className="about-section" aria-labelledby="about-title">
+      <header className="about-heading">
+        <p className="eyebrow">O našem studiu</p>
+        <h1 id="about-title">Něco o nás</h1>
+        <p className="lead">
+          Garden Studio navrhuje zahrady, které přirozeně navazují na dům,
+          okolní krajinu i každodenní život jejich majitelů.
+        </p>
+      </header>
+      <div className="about-story">
+        <p className="eyebrow">Naše představa</p>
+        <h2>Prostor, ve kterém se dobře žije.</h2>
+        <p>
+          Každý návrh začíná rozhovorem a poznáním místa. Hledáme rovnováhu
+          mezi krásou, funkčností a přírodou, aby výsledná zahrada působila
+          osobitě a byla příjemná v každém ročním období.
+        </p>
+      </div>
+      <div className="about-principles">
+        {principles.map((principle) => (
+          <article className="principle-card" key={principle.number}>
+            <span className="principle-number">{principle.number}</span>
+            <h3>{principle.title}</h3>
+            <p>{principle.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function App() {
-  const isContactPage = window.location.pathname.replace(/\/+$/, "") === "/contact";
+  const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
+  const isContactPage = currentPath === "/contact";
+  const isAboutPage = currentPath === "/about";
 
   return (
     <main className="app">
@@ -54,6 +107,8 @@ export default function App() {
 
       {isContactPage ? (
         <ContactPage />
+      ) : isAboutPage ? (
+        <AboutPage />
       ) : (
         <header className="hero">
           <h1>Garden Studio</h1>
